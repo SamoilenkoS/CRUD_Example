@@ -1,0 +1,6 @@
+﻿CREATE TABLE dbo.Products (
+    Id INT NOT NULL IDENTITY(1, 1),
+    Title NVARCHAR(250) NOT NULL,
+    Price SMALLMONEY NOT NULL,
+    CONSTRAINT PK_Products_Id PRIMARY KEY (Id)
+)

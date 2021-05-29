@@ -1,0 +1,9 @@
+﻿CREATE TABLE dbo.Customers (
+    Id INT NOT NULL IDENTITY(1, 1),
+    FirstName NVARCHAR(250) NOT NULL,
+    LastName NVARCHAR(250) NOT NULL,
+    Birthday DATE NOT NULL,
+    Email NVARCHAR(50) NULL,
+    Phone NVARCHAR(20) NULL,
+    CONSTRAINT PK_Customers_Id PRIMARY KEY (Id)
+)
