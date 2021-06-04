@@ -8,6 +8,7 @@ using CRUD_DAL;
 using CRUD_DAL.DbConfiguration;
 using CRUD_DAL.Interfaces;
 using CRUD_DAL.Repositories;
+using CRUD_Logic.Services;
 using LinqToDB.Mapping;
 
 namespace CRUD_ASP_API
@@ -24,10 +25,15 @@ namespace CRUD_ASP_API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
             services.AddDatabase<CRUDDbConnection>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISessionService, SessionService>();
+
             services.AddSingleton<MappingSchema, CRUDMappingSchema>();
         }
 
@@ -42,6 +48,11 @@ namespace CRUD_ASP_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(options => options
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
 
             app.UseEndpoints(endpoints =>
             {

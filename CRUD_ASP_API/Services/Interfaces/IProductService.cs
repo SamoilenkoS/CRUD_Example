@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using CRUD_DAL.Entities;
 
-namespace CRUD_ASP_API.Services
+namespace CRUD_ASP_API.Services.Interfaces
 {
     public interface IProductService
     {

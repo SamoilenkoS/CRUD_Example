@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using CRUD_ASP_API.Services;
+using CRUD_ASP_API.Services.Interfaces;
 using CRUD_DAL.Entities;
 
 namespace CRUD_ASP_API.Controllers

@@ -17,7 +17,7 @@ namespace CRUD_DAL.Repositories
             _dbConnection = dbConnection;
         }
 
-        public async Task AddAsync(Product product)
+        public async Task AddProductAsync(Product product)
         {
             await _dbConnection
                 .GetTable<Product>()
@@ -26,26 +26,26 @@ namespace CRUD_DAL.Repositories
                 .InsertAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             return await _dbConnection.GetTable<Product>().ToListAsync();
         }
 
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
             var response = await _dbConnection.GetTable<Product>().Where(x => x.Id == id).ToListAsync();
 
             return response.FirstOrDefault();
         }
 
-        public async Task<bool> RemoveByIdAsync(int id)
+        public async Task<bool> RemoveProductByIdAsync(int id)
         {
             var response = await _dbConnection.GetTable<Product>().DeleteAsync(x => x.Id == id);
 
             return response == 1;
         }
 
-        public async Task<bool> UpdateAsync(Product product)
+        public async Task<bool> UpdateProductAsync(Product product)
         {
             var result = await _dbConnection.GetTable<Product>()
                 .Where(x => x.Id == product.Id)

@@ -6,10 +6,10 @@ namespace CRUD_DAL.Interfaces
 {
     public interface IProductRepository
     {
-        Task AddAsync(Product product);
-        Task<Product> GetByIdAsync(int id);
-        Task<IEnumerable<Product>> GetAllAsync();
-        Task<bool> RemoveByIdAsync(int id);
-        Task<bool> UpdateAsync(Product product);
+        Task AddProductAsync(Product product);
+        Task<Product> GetProductByIdAsync(int id);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<bool> RemoveProductByIdAsync(int id);
+        Task<bool> UpdateProductAsync(Product product);
     }
 }

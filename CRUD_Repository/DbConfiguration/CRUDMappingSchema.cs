@@ -11,6 +11,11 @@ namespace CRUD_DAL.DbConfiguration
                 .Entity<Product>()
                 .HasAttribute(new TableAttribute("Products") {IsColumnAttributeRequired = false})
                 .HasPrimaryKey(x => x.Id);
+
+            GetFluentMappingBuilder()
+                .Entity<User>()
+                .HasAttribute(new TableAttribute("Users") { IsColumnAttributeRequired = false })
+                .HasPrimaryKey(x => x.Id);
         }
     }
 }
