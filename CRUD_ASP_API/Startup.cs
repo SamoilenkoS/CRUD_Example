@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using CRUD_ASP_API.Services;
+using CRUD_ASP_API.Services.Interfaces;
 using CRUD_DAL;
 using CRUD_DAL.DbConfiguration;
 using CRUD_DAL.Interfaces;
