@@ -1,3 +1,4 @@
+using System.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ using CRUD_ASP_API.Services;
 using CRUD_ASP_API.Services.Interfaces;
 using CRUD_DAL;
 using CRUD_DAL.DbConfiguration;
+using CRUD_DAL.InsightDB;
 using CRUD_DAL.Interfaces;
 using CRUD_DAL.Repositories;
 using CRUD_Logic.Services;
@@ -22,19 +24,27 @@ namespace CRUD_ASP_API
         }
 
         public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
             services.AddControllers();
-            services.AddDatabase<CRUDDbConnection>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISessionService, SessionService>();
 
+            services.AddScoped<IDbContext, DbContext>();
+            services.AddSingleton<ConnectionStringSettings, ConnectionStringSettings>(x =>
+                new ConnectionStringSettings("CRUD_DB", Configuration.GetConnectionString("Default"),
+                    Configuration.GetConnectionString("ProviderName")));
+            /* Linq2DB
+            //services.AddDatabase<CRUDDbConnection>(options
+            //  => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<IUserRepository, UserRepository>();
+            */
             services.AddSingleton<MappingSchema, CRUDMappingSchema>();
         }
 
@@ -55,10 +65,7 @@ namespace CRUD_ASP_API
                 .AllowAnyMethod()
                 .AllowCredentials());
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

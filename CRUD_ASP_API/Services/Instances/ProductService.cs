@@ -2,41 +2,41 @@
 using System.Threading.Tasks;
 using CRUD_ASP_API.Services.Interfaces;
 using CRUD_DAL.Entities;
-using CRUD_DAL.Interfaces;
+using CRUD_DAL.InsightDB;
 
 namespace CRUD_ASP_API.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
-        public ProductService(IProductRepository productRepository)
+        private readonly IDbContext _dbContext;
+        public ProductService(IDbContext dbContext)
         {
-            _productRepository = productRepository;
+            _dbContext = dbContext;
         }
 
         public async Task AddProductAsync(Product product)
         {
-            await _productRepository.AddProductAsync(product);
+            await _dbContext.ProductRepository.AddProductAsync(product);
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return await _productRepository.GetAllProductsAsync();
+            return await _dbContext.ProductRepository.GetAllProductsAsync();
         }
 
         public async Task<bool> RemoveByIdAsync(int id)
         {
-            return await _productRepository.RemoveProductByIdAsync(id);
+            return await _dbContext.ProductRepository.RemoveProductByIdAsync(id);
         }
 
         public async Task<bool> UpdateAsync(Product product)
         {
-            return await _productRepository.UpdateProductAsync(product);
+            return await _dbContext.ProductRepository.UpdateProductAsync(product);
         }
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _productRepository.GetProductByIdAsync(id);
+            return await _dbContext.ProductRepository.GetProductByIdAsync(id);
         }
     }
 }

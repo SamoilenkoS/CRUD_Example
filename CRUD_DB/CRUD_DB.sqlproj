@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Table" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\Customers.sql" />
@@ -64,5 +65,6 @@
     <Build Include="Table\Orders.sql" />
     <Build Include="Table\Products.sql" />
     <Build Include="Table\Users.sql" />
+    <Build Include="StoredProcedures\GetAllProducts.sql" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CRUD_DAL.Entities;
+using CRUD_DAL.InsightDB;
 using CRUD_DAL.Interfaces;
 using CRUD_Logic.Models;
 
@@ -7,28 +8,28 @@ namespace CRUD_ASP_API.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
+        private readonly IDbContext _dbContext;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IDbContext dbContext)
         {
-            _userRepository = userRepository;
+            _dbContext = dbContext;
         }
 
         public async Task<User> AddUserAsync(User user)
         {
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            return await _userRepository.AddUserAsync(user);
+            return await _dbContext.UserRepository.AddUserAsync(user);
         }
 
         public async Task<User> GetUserByIdAsync(int id)
         {
-            return await _userRepository.GetUserByIdAsync(id);
+            return await _dbContext.UserRepository.GetUserByIdAsync(id);
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            return await _userRepository.GetUserByEmailAsync(email);
+            return await _dbContext.UserRepository.GetUserByEmailAsync(email);
         }
 
         public async Task<ValidationResult> ValidateUserAsync(User user)
