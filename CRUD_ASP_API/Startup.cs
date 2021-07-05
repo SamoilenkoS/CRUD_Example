@@ -39,13 +39,14 @@ namespace CRUD_ASP_API
             services.AddSingleton<ConnectionStringSettings, ConnectionStringSettings>(x =>
                 new ConnectionStringSettings("CRUD_DB", Configuration.GetConnectionString("Default"),
                     Configuration.GetConnectionString("ProviderName")));
-            /* Linq2DB
-            //services.AddDatabase<CRUDDbConnection>(options
-            //  => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            //services.AddScoped<IProductRepository, ProductRepository>();
-            //services.AddScoped<IUserRepository, UserRepository>();
-            */
+
+            services.AddDatabase<CRUDDbConnection>(options
+                => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddSingleton<MappingSchema, CRUDMappingSchema>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +56,14 @@ namespace CRUD_ASP_API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+              c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
 
