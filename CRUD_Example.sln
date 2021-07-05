@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_DAL", "CRUD_Repository
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_ASP_API", "CRUD_ASP_API\CRUD_ASP_API.csproj", "{F6226D0C-55CE-4D1E-8560-A21AFC42B509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_Core", "CRUD_Core\CRUD_Core.csproj", "{F654F752-1565-4B38-8CAF-E8734907E1F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_Core", "CRUD_Core\CRUD_Core.csproj", "{F654F752-1565-4B38-8CAF-E8734907E1F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_Tests", "CRUD_Tests\CRUD_Tests.csproj", "{C5D7BAD3-A98E-4C51-B7DC-38E57B559601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{F654F752-1565-4B38-8CAF-E8734907E1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F654F752-1565-4B38-8CAF-E8734907E1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F654F752-1565-4B38-8CAF-E8734907E1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5D7BAD3-A98E-4C51-B7DC-38E57B559601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5D7BAD3-A98E-4C51-B7DC-38E57B559601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5D7BAD3-A98E-4C51-B7DC-38E57B559601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5D7BAD3-A98E-4C51-B7DC-38E57B559601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

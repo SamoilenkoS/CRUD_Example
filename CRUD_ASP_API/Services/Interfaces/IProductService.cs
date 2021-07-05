@@ -11,5 +11,6 @@ namespace CRUD_ASP_API.Services.Interfaces
         Task<bool> RemoveByIdAsync(int id);
         Task<bool> UpdateAsync(Product product);
         Task<Product> GetByIdAsync(int id);
+        Task<IEnumerable<OrderProduct>> GetOrderProductAsync();
     }
 }

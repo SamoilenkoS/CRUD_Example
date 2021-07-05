@@ -66,5 +66,6 @@
     <Build Include="Table\Products.sql" />
     <Build Include="Table\Users.sql" />
     <Build Include="StoredProcedures\GetAllProducts.sql" />
+    <Build Include="StoredProcedures\GetOrderProduct.sql" />
   </ItemGroup>
 </Project>

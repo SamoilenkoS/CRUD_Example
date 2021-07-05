@@ -54,5 +54,10 @@ namespace CRUD_DAL.Repositories
 
             return result == 1;
         }
+
+        public async Task<IEnumerable<OrderProduct>> GetOrderProductAsync()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

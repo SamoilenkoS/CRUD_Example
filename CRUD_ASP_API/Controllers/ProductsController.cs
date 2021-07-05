@@ -46,5 +46,11 @@ namespace CRUD_ASP_API.Controllers
         {
             return await _productService.UpdateAsync(product);
         }
+
+        [HttpGet("order_product")]
+        public async Task<IEnumerable<OrderProduct>> GetOrderProductAsync()
+        {
+            return await _productService.GetOrderProductAsync();
+        }
     }
 }

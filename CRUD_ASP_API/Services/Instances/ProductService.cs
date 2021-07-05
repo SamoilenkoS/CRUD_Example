@@ -38,5 +38,10 @@ namespace CRUD_ASP_API.Services
         {
             return await _dbContext.ProductRepository.GetProductByIdAsync(id);
         }
+
+        public async Task<IEnumerable<OrderProduct>> GetOrderProductAsync()
+        {
+            return await _dbContext.ProductRepository.GetOrderProductAsync();
+        }
     }
 }

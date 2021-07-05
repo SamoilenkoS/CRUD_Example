@@ -11,5 +11,6 @@ namespace CRUD_DAL.Interfaces
         Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<bool> RemoveProductByIdAsync(int id);
         Task<bool> UpdateProductAsync(Product product);
+        Task<IEnumerable<OrderProduct>> GetOrderProductAsync();
     }
 }
