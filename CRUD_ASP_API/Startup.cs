@@ -13,6 +13,7 @@ using CRUD_DAL.Interfaces;
 using CRUD_DAL.Repositories;
 using CRUD_Logic.Services;
 using LinqToDB.Mapping;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace CRUD_ASP_API
 {
@@ -73,6 +74,8 @@ namespace CRUD_ASP_API
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials());
+
+            app.UseMiddleware<TestMiddleware>();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
