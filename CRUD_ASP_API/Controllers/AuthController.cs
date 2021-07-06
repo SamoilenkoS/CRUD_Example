@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CRUD_ASP_API.Services;
 using CRUD_DAL.Entities;
 using CRUD_Logic.Services;
@@ -49,7 +50,7 @@ namespace CRUD_ASP_API.Controllers
 
         [HttpPost]
         [Route("logout")]
-        public async Task<IActionResult> LogoutAsync()
+        public IActionResult LogoutAsync()
         {
             Response.Cookies.Delete("jwt");
 
@@ -74,6 +75,13 @@ namespace CRUD_ASP_API.Controllers
             }
 
             return Unauthorized();
+        }
+
+        [HttpGet]
+        [Route("products")]
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        {
+          return await _userService.GetAllProductsAsync();
         }
     }
 }

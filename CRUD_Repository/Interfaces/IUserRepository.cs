@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CRUD_DAL.Entities;
 
 namespace CRUD_DAL.Interfaces
@@ -8,5 +9,6 @@ namespace CRUD_DAL.Interfaces
         Task<User> AddUserAsync(User user);
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetUserByEmailAsync(string email);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using CRUD_DAL.Entities;
 using CRUD_DAL.Interfaces;
 using CRUD_Logic.Models;
@@ -29,6 +31,11 @@ namespace CRUD_ASP_API.Services
         public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _userRepository.GetUserByEmailAsync(email);
+        }
+
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        {
+          return await _userRepository.GetAllProductsAsync();
         }
 
         public async Task<ValidationResult> ValidateUserAsync(User user)

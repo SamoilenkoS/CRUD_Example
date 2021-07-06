@@ -3,8 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CRUD_DAL.DbConfiguration;
 using CRUD_DAL.Entities;
+using CRUD_DAL.Extensions;
 using CRUD_DAL.Interfaces;
 using LinqToDB;
+using LinqToDB.Data;
 
 namespace CRUD_DAL.Repositories
 {
@@ -57,7 +59,8 @@ namespace CRUD_DAL.Repositories
 
         public async Task<IEnumerable<OrderProduct>> GetOrderProductAsync()
         {
-            throw new System.NotImplementedException();
+          return await _dbConnection.QueryProcAsync<OrderProduct>(nameof(GetOrderProductAsync)
+            .GetStoredProcedureName());
         }
     }
 }

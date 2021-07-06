@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CRUD_DAL.Entities;
 using CRUD_Logic.Models;
 
@@ -10,5 +11,6 @@ namespace CRUD_ASP_API.Services
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetUserByEmailAsync(string email);
         Task<ValidationResult> ValidateUserAsync(User user);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
     }
 }
