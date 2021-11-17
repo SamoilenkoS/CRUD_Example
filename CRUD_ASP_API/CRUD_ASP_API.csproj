@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Autorization\**" />
+    <Content Remove="Autorization\**" />
+    <EmbeddedResource Remove="Autorization\**" />
+    <None Remove="Autorization\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="linq2db" Version="3.3.0" />
     <PackageReference Include="linq2db.AspNet" Version="3.3.0" />
@@ -17,10 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CRUD_Logic\CRUD_Logic.csproj" />
     <ProjectReference Include="..\CRUD_Repository\CRUD_DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Autorization\" />
   </ItemGroup>
 
 </Project>
