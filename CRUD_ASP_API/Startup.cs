@@ -41,13 +41,14 @@ namespace CRUD_ASP_API
                 new ConnectionStringSettings("CRUD_DB", Configuration.GetConnectionString("Default"),
                     Configuration.GetConnectionString("ProviderName")));
 
-            services.AddDatabase<CRUDDbConnection>(options
+            services.AddDatabase<CRUDDbConnection>(options//linq2DB
                 => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSingleton<MappingSchema, CRUDMappingSchema>();
             services.AddSwaggerGen();
+            services.AddHostedService<TimedHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

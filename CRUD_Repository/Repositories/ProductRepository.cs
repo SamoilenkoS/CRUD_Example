@@ -35,14 +35,16 @@ namespace CRUD_DAL.Repositories
 
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            var response = await _dbConnection.GetTable<Product>().Where(x => x.Id == id).ToListAsync();
+            var response = await _dbConnection.GetTable<Product>()
+                .Where(x => x.Id == id).ToListAsync();
 
             return response.FirstOrDefault();
         }
 
         public async Task<bool> RemoveProductByIdAsync(int id)
         {
-            var response = await _dbConnection.GetTable<Product>().DeleteAsync(x => x.Id == id);
+            var response = await _dbConnection.GetTable<Product>()
+                .DeleteAsync(x => x.Id == id);
 
             return response == 1;
         }
@@ -59,8 +61,9 @@ namespace CRUD_DAL.Repositories
 
         public async Task<IEnumerable<OrderProduct>> GetOrderProductAsync()
         {
-          return await _dbConnection.QueryProcAsync<OrderProduct>(nameof(GetOrderProductAsync)
-            .GetStoredProcedureName());
+          return await _dbConnection
+                .QueryProcAsync<OrderProduct>(
+              nameof(GetOrderProductAsync).GetStoredProcedureName());
         }
     }
 }
